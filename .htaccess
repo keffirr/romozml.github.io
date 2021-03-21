@@ -15,33 +15,9 @@ php_flag allow_url_fopen off
 ############################################################################
 #### Выбор основного зеркала (с www или без www)                        ####
 ############################################################################
-    # 1. Удалить www
-RewriteCond %{ENV:HTTPS} on
-    #Если включен https
-RewriteRule .* - [E=SSL:s]
-    #То создаем переменную  ssl с текстом s
-RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
-    # Проверяем, содержит ли домен www в начале URL.
-RewriteRule ^(.*)$ http%{ENV:SSL}://%1/$1 [R=301,L]
-    # Перенаправляем удаляем www
-
-    # 2. Добавить www
-#RewriteCond %{ENV:HTTPS} on
-    #Если включен https
-#RewriteRule .* - [E=SSL:s]
-    #То создаем переменную  ssl с текстом s
-#RewriteCond %{HTTP_HOST} !^www\.(.*) [NC]
-    # Если нет www в начале домена
-#RewriteRule ^(.*)$ http%{ENV:SSL}://www.%{HTTP_HOST}/$1 [R=301,L]
-    #Подставляем www и https если он включен.
-
-############################################################################
-#### Перенаправляем протокол https на http                              ####
-############################################################################
-#RewriteCond %{HTTPS} on
-   # Проверяем наличие https в URL.
-#RewriteRule ^.*$ http://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
-   # Перенаправляем протокол на http.
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.ramaz.ml
+RewriteRule ^(.*)$ http://correct-domain.ru/$1 [R=301,L]
 
 ############################################################################
 #### Перенаправляем протокол http на https                              ####
