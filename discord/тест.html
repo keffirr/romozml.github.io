@@ -22,6 +22,10 @@
     <meta property="og:url" content="https://romoz.ml"/>
     <meta property="og:site_name" content="Discord - ❄Romoz❄#3171"/>  
     <link rel="shortcut icon" href="favicon.ico">  
+    <script language=JavaScript><!--
+function pop_voice() {pop=window.open('','voice','width=250,height=350,left=250,top=100'); pop.focus();}
+//-->
+</script>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
     <!-- Global CSS -->
@@ -56,128 +60,30 @@
   gtag('config', 'G-LXL3TLRDX8');
 </script>
   <body>
-    <h1 class ="page-header text-center">Страница, содержащая блок для голосования</h1>
- 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-offset-3 col-sm-6">
-          <section class="panel panel-danger">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                Голосование
-              </h3>
-            </div>
-            <div class="panel-body">
-            
-              <!-- HTML-структура голосовалки -->
-              <div class="question"></div>
-              <hr>
-              <div id="vote-section">              
-                <form id="vote" action="poll-vote.php" method="POST">
-                  <div class="answers"></div>
-                  <button type="submit" class="btn btn-default" disabled="disabled">Голосовать</button>
-                </form>
-              </div>
-              <!-- конец HTML-структура -->
-              
-            </div>
-          </section>
-        </div>
-      </div>    
-    </div>
+<!--  указываем в target окно вывода //-->
+<form action="vote.php" method="get" target='voice'>
+<input type="Hidden" name="id" value="1">
+<p><b>Оцените сайт:</b></p>
+<input type="Radio" name="vote" value="1" checked>Отлично<br>
+<input type="Radio" name="vote" value="2">Хорошо<br>
+<input type="Radio" name="vote" value="3">Удовлет.<br>
+<input type="Radio" name="vote" value="4">Плохо<br>
+<input type="Radio" name="vote" value="5">Очень плохо<br>
+<!--  указываем вызов функции по клику //-->
+<input type="Submit" value=" Голосовать" style="margin-top:10px;"  onClick='pop_voice();' >
+</form>
+
+<!--  указываем в target окно вывода и вызов функции по клику //-->
+<p><a href='vote.php?id=1' onClick='pop_voice();' target='voice'><button>Результаты</button></a></p>
+
+<!-- указываем в href после vote.php?id= цифру нужного нам голосования, для которого уже создали файлы //-->
+<p><a href='vote.php?id=1' target='_blank'><button>Результаты</button></a></p>
  
     <!-- Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
     <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script> 
-        <script>
-      $(function(){
-      
-        var pathToPolls = 'polls.php';
-        
-        var vote = {};
-        $.get(pathToPolls, function(data) {
-          
-          var data = JSON.parse(data);
-          vote['id']=data['id'];
-          vote['question']=data['question'];
-          vote['answers']=data['answers'];
 
-          if (data.hasOwnProperty('result')) {
-            $('#vote').parent().parent().find('.question').text(vote['question']);
-            var _answers = vote['answers'];
-            var output = '';
-            var result = data['result'];
-            var totalvotes = 0;
-            for (var i=0; i <= result.length-1; i++) {
-              totalvotes += result[i];
-            }
-            for (var i=0; i <= result.length-1; i++) {
-              output += '<p style="margin:0px;">'+_answers[i]+'</p>'+
-                '<p class="text-right" style="margin:0px;"><b>'+((result[i]/totalvotes)*100).toFixed(1)+'%</b> (Голосов: '+result[i]+')</p>'+
-                '<div class="progress">'+
-                  '<div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="'+(result[i]/totalvotes)*100+'" aria-valuemin="0" aria-valuemax="100" style="width: '+(result[i]/totalvotes)*100+'%">'+
-                    '<span class="sr-only">'+(result[i]/totalvotes)*100+'%</span>'+
-                  '</div>'+
-                '</div>';
-            }
-            $('#vote-section').html(output);
-          } else {          
-            processPoll();
-          }
-        });    
-
-        var processPoll = function() {        
-          var _id = vote['id'];
-          var _answers = vote['answers'];
-          var form = $('#vote');
-          form.parent().parent().find('.question').text(vote['question']);
-          form.prepend('<input type="hidden" name="count" value="'+vote['answers'].length+'">');
-          form.prepend('<input type="hidden" name="id" value="'+vote['id']+'">');
-          var answers = form.find('.answers');
-          for (var i=0; i<=vote['answers'].length-1;i++) {
-            answers.append('<div class="radio">'+
-                '<label>'+
-                  '<input type="radio" name="poll" value="'+(i+1)+'">'+
-                  vote['answers'][i]+
-                '</label>'+
-              '</div>');
-          }
-          if (form.find('button[type="submit"]:disabled')) { 
-            form.find('input[type="radio"]').click(function(){
-              form.find('button[type="submit"]').prop('disabled',false);
-              form.find('input[type="radio"]').off('click');  
-            });          
-          };
-          
-          form.submit(function(e) {
-            //отмена действия по умолчанию для кнопки submit
-            e.preventDefault();
-            $.post(form.attr('action'), form.serializeArray(), function(data) {
-              if (data) {
-                var data = JSON.parse(data);
-                var output = '';
-                var result = data[_id];
-                var totalvotes = 0;
-                for (var i=0; i <= result.length-1; i++) {
-                  totalvotes += result[i];
-                }
-                for (var i=0; i <= result.length-1; i++) {
-                  output += '<p style="margin:0px;">'+_answers[i]+'</p>'+
-                    '<p class="text-right" style="margin:0px;"><b>'+((result[i]/totalvotes)*100).toFixed(1)+'%</b> (Голосов: '+result[i]+')</p>'+
-                    '<div class="progress">'+
-                      '<div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="'+(result[i]/totalvotes)*100+'" aria-valuemin="0" aria-valuemax="100" style="width: '+(result[i]/totalvotes)*100+'%">'+
-                        '<span class="sr-only">'+(result[i]/totalvotes)*100+'%</span>'+
-                      '</div>'+
-                    '</div>';
-                }
-                $('#vote-section').html(output);
-              }
-            }); 
-          });
-        };
-
-      });
     <!-- github calendar plugin -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js"></script>
