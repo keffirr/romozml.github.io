@@ -16,8 +16,8 @@ php_flag allow_url_fopen off
 #### Выбор основного зеркала (с www или без www)                        ####
 ############################################################################
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^www.ramaz.ml
-RewriteRule ^(.*)$ http://correct-domain.ru/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^romoz.ml
+RewriteRule ^(.*)$ http://www.romoz.ml/$1 [R=301,L]
 
 ############################################################################
 #### Перенаправляем протокол http на https                              ####
