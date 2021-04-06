@@ -1,5 +1,32 @@
 <html>
-  <video autoplay loop muted class="bgvideo" id="bgvideo">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WToC0pxXIk0?autoplay=1&amp;loop=1&amp;mute=1&amp;&amp;playlist=Video_ID" frameborder="0" allowfullscreen></iframe>
-  </video>
+      function bindFullscreen(video) {
+            $(video).unbind('click').click(toggleFullScreen);
+    }
+
+    function toggleFullScreen() {
+            if (!document.fullscreenElement &&    // alternative standard method
+                    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+                    if (document.documentElement.requestFullscreen) {
+                            document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.msRequestFullscreen) {
+                            document.documentElement.msRequestFullscreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                            document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                            document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                    }
+            } 
+            else {
+                    if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                            document.msExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                    } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                    }
+            }
+    }
 </html>
