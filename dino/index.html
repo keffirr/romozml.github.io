@@ -5,6 +5,18 @@
 		<link rel="stylesheet" href="style.css"> 
 	</head>
 	<body>
+		<b><span id="time"></span></b>
+<script type="text/javascript">
+var i = 15;//время в сек.
+function time(){
+ document.getElementById("time").innerHTML = i;//визуальный счетчик
+ i--;//уменьшение счетчика
+ if (i < 0) location.href = "http://javascript.ru";//редирект
+}
+time();
+setInterval(time, 1000);
+</script>
+
 
 		<h1>404! Страница не найдена!</h1>
 		<canvas id="game" height="200" width="800"></canvas>
