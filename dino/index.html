@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>404</title>
+		<link rel="stylesheet" href="style.css"> 
+	</head>
+	<body>
+
+		<h1>404! Страница не найдена!</h1>
+		<canvas id="game" height="200" width="800"></canvas>
+		<p class="controls">Нажми пробел, чтобы начать игру</p>
+
+        <script src="js/helpers.js"></script>
+        <script src="js/objects/game-object.js"></script>
+        <script src="js/objects/cactus.js"></script>
+        <script src="js/objects/dinosaur.js"></script>
+        <script src="js/objects/background.js"></script>
+        <script src="js/objects/score.js"></script>
+        <script src="js/game.js"></script>
+        <script>
+        	new Game({
+        		el: document.getElementById("game")
+        	});
+        </script>
+	</body>
+</html>
