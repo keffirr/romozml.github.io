@@ -28,6 +28,7 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
     <!-- Global CSS -->
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="dino/style.css"> 
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     
@@ -73,6 +74,8 @@
                 <h1 class="name"><big><h1>404 </h1></big>Упс!</h1>
                 <h2 class="desc">Вы попали на несуществующую страницу</h2>
                 <h3 class="desc"><a href="https://romoz.ml/">Вернуться на главную страницу</a></h3>
+                <canvas id="game" height="200" width="800"></canvas>
+		<p class="controls">Нажми пробел, чтобы начать игру</p>
     </header><!--//header-->
         </div><!--//container-->
 
@@ -83,7 +86,20 @@
         </div><!--//row-->
     </div><!--//masonry-->
  
-    <!-- Javascript -->          
+    <!-- Javascript --> 
+    <script src="js/helpers.js"></script>
+    <script src="js/objects/game-object.js"></script>
+    <script src="js/objects/cactus.js"></script>
+    <script src="js/objects/dinosaur.js"></script>
+    <script src="js/objects/background.js"></script>
+    <script src="js/objects/score.js"></script>
+    <script src="js/game.js"></script>
+    <script src="test.js"></script>
+    <script>
+        	new Game({
+        		el: document.getElementById("game")
+        	});
+    </script>
     <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
     <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script> 
