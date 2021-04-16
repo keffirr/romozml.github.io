@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>discord</title>
+  </head>
+  <body>
+    <b><span id="time"></span></b>
+<script type="text/javascript">
+var i = 15;//время в сек.
+function time(){
+ document.getElementById("time").innerHTML = i;//визуальный счетчик
+ i--;//уменьшение счетчика
+ if (i < 0) location.href = "http://javascript.ru";//редирект
+}
+time();
+setInterval(time, 1000);
+</script>
+    </html>
