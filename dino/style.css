@@ -1,5 +1,4 @@
 html, body {
-	background: #eee;
 	font-size: 15px;
 	font-family: Arial;
 	margin: 0;
@@ -12,10 +11,23 @@ body {
 }
 
 canvas {
-	/*background: #eee;*/
+       background: #212121
 }
 
 .controls {
 	text-align: right;
 	color: #aaa;
 }
+
+a.knopka {
+  text-align: right;
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: #808080; /* фон кнопки */
+  padding: .6em 1.5em; /* отступ от текста */
+  outline: none; /* убирать контур в Mozilla */
+  filter: invert(1);
+} 
+a.knopka:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
+a.knopka:active { background: rgb(152,15,0); } /* при нажатии */
