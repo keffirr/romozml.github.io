@@ -1,0 +1,35 @@
+html, body
+{
+    background: #212121;
+    color: #F5F5F5;
+	font-size: 15px;
+	font-family: Arial;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 800px;
+	margin: 0 auto;
+}
+
+canvas {
+	background: #212121;
+}
+
+.controls {
+	text-align: right;
+	color: #aaa;
+}
+
+.invert {
+       filter: invert(1);
+}
+
+::selection {
+       background: transparent;
+}
+
+::-moz-selection {
+       background: transparent;
+}
