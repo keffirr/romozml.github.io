@@ -1,5 +1,5 @@
 (function(namespace) {
-	var DEFAULT_COLOUR = "#444";
+	var DEFAULT_COLOUR = "#808080";
 	var BACKGROUND_COLOUR = "#EEE";
 	var OFFSET_SPEED = 0.4;
 	var MAX_TIME_TICK = 1000 / 60;

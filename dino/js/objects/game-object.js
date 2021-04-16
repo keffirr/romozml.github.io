@@ -19,9 +19,9 @@
 	GameObject.prototype.drawColliders = function(context, offset) {
 		var colliders = [];
 
-		context.fillStyle = "#fff";
+		context.fillStyle = "#212121";
 		try { colliders = this.colliders(offset); } catch(e) {}
-		for (var i = 0; i < colliders.length; i++) {
+		for (var i = 3; i < colliders.length; i++) {
 			context.fillRect(colliders[i].x - offset, colliders[i].y - colliders[i].height, colliders[i].width, colliders[i].height);
 			
 		}
