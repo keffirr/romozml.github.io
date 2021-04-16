@@ -27,7 +27,6 @@ a.knopka {
   background: #808080; /* фон кнопки */
   padding: .6em 1.5em; /* отступ от текста */
   outline: none; /* убирать контур в Mozilla */
-  filter: invert(1);
 } 
 a.knopka:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
 a.knopka:active { background: rgb(152,15,0); } /* при нажатии */
