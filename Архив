@@ -213,3 +213,22 @@
     <script type="text/javascript" src="assets/js/main.js"></script>            
 </body>
 </html> 
+
+<html>
+  <head>
+    <title>test</title>
+  </head>
+  <body>
+<b><span id="time"></span></b>
+<script type="text/javascript">
+var i = 15;//время в сек.
+function time(){
+ document.getElementById("time").innerHTML = i;//визуальный счетчик
+ i--;//уменьшение счетчика
+ if (i < 0) location.href = "http://javascript.ru";//редирект
+}
+time();
+setInterval(time, 1000);
+</script>
+  </body>
+</html>
