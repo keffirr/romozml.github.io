@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Fem.Love - Fotografiruyu zakat · информация о карте | osu!</title>
+    
+  </head>
+  <body>
+<b><span id="time"></span></b>
+<script type="text/javascript">
+var i = 15;//время в сек.
+function time(){
+ document.getElementById("time").innerHTML = i;//визуальный счетчик
+ i--;//уменьшение счетчика
+ if (i < 0) location.href = "https://osu.ppy.sh/beatmapsets/1435051/#osu/2953023";//редирект
+}
+time();
+setInterval(time, 1);
+  </body>
+  </html>
